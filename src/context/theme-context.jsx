@@ -22,15 +22,11 @@ const ThemeWrapper = styled.div`
   ${wrapTheme};
   max-width: 100vw;
 	min-height: 100vh;
-  h2 {
-    font-size: 2rem;
-  }
 `;
 
 const ThemeContextProvider = props => {
   return (
-    // hard-coding mode for the moment.
-    // eventually, I may add in a light-mode toggle
+    // hard-coding mode for the moment. eventually, I may add in a light-mode toggle
     <ThemeProvider theme={{ mode: "dark" }}>
       <ThemeWrapper>
         {props.children}
