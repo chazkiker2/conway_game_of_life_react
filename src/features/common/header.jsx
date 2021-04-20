@@ -53,8 +53,7 @@ const StyledHeader = styled.header`
         }
       }
     }
-    }
-
+  }
 `;
 
 
