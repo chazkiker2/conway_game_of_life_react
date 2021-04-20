@@ -29,10 +29,10 @@ const StyledHeader = styled.header`
   padding: 0 2rem;
   div.container {
     padding: 1rem;
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
     div, nav {
       display: flex;
       flex-flow: row nowrap;
@@ -53,7 +53,7 @@ const StyledHeader = styled.header`
         }
       }
     }
-	}
+    }
 
 `;
 
