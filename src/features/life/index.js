@@ -30,8 +30,7 @@ export class Generation {
       downLeft: [i + 1, j - 1],
       left: [i, j - 1],
     };
-    const mapped = Object.values(original).map(([ni, nj]) => [mod(ni, M), mod(nj, N)]);
-    return mapped;
+    return Object.values(original).map(([ni, nj]) => [mod(ni, M), mod(nj, N)]);
   }
 
   countLiveNeighbors(i, j) {
@@ -46,13 +45,7 @@ export class Generation {
         const numLiveNeighbors = this.countLiveNeighbors(i, j);
         const hasTwo = numLiveNeighbors === 2;
         const hasThree = numLiveNeighbors === 3;
-        if (isAlive ? (hasTwo || hasThree) : hasThree) {
-          debugger;
-          this.storage[i][j] = 1;
-        } else {
-          debugger;
-          this.storage[i][j] = 0;
-        }
+        this.storage[i][j] = (isAlive ? (hasTwo || hasThree) : hasThree) ? 1 : 0
       }
     }
   }
@@ -81,8 +74,8 @@ export class Generation {
     }
     if (stuck) {
       this.printTable("STUCK AT THIS FRAME");
-    } else if (frameCount === 2500) {
-      console.log("CAPPING OFF FRAMES AT 2500");
+    } else if (frameCount === 250) {
+      console.log("CAPPING OFF FRAMES AT 250");
     } else {
       this.printTable("NO LIFE TO CONTINUE");
     }
@@ -100,9 +93,8 @@ export class Generation {
   }
 
   deepCopy() {
-    return Array.from(this.storage.map(sub => [...sub]));
+    return this.storage.map(sub => [...sub]);
   }
-
 
 }
 
@@ -124,7 +116,4 @@ export function main() {
 
   const gen = new Generation(...seeds[1]);
   gen.live();
-  // console.table(gen);
-  // console.log(gen);
-  // gen.printTable();
 }
