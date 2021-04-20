@@ -34,7 +34,9 @@ export class Generation {
   }
 
   countLiveNeighbors(i, j) {
-    return Array.from(this.getNeighborCoords(i, j)).filter(([ni, nj]) => this.currentGen[ni][nj] !== 0).length;
+    return Array.from(this.getNeighborCoords(i, j))
+      .filter(([ni, nj]) => this.currentGen[ni][nj] !== 0)
+      .length;
   }
 
   generateSuccessor() {
@@ -81,6 +83,51 @@ export class Generation {
     }
   }
 
+  memoize(start, stop, step) {
+    switch (arguments.length) {
+      case 0:
+        throw new Error('cannot memoize without at least one argument');
+      case 1:
+        start = 0;
+        stop = arguments[0];
+        step = 1;
+        break;
+      case 2:
+        [start, stop, step] = arguments;
+        step = 1;
+        break;
+      case 3:
+        [start, stop, step] = arguments
+        break;
+      default:
+        break;
+    }
+
+    let lastSelf = this.deepCopy();
+    let frameCount = 0;
+    const cache = {
+      start: lastSelf,
+    };
+
+    while (frameCount < stop) {
+      this.generateSuccessor();
+      if (this.equals(lastSelf)) {
+        for (let i = frameCount; i < stop; i++) {
+          cache[i] = lastSelf;
+        }
+        break;
+      }
+      lastSelf = this.deepCopy();
+      cache[frameCount] = lastSelf;
+      frameCount++;
+    }
+    const scoped_cache = {};
+    for (let i = start; i < stop; i += step) {
+      scoped_cache[i] = cache[i];
+    }
+    return scoped_cache;
+  }
+
   equals(a, b = undefined) {
     if (!b) {
       b = this.storage;
@@ -115,5 +162,6 @@ export function main() {
   }
 
   const gen = new Generation(...seeds[1]);
-  gen.live();
+  const res = gen.memoize(5, 20);
+  console.log(res);
 }
