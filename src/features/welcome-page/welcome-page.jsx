@@ -1,12 +1,12 @@
-import { Link } from "../common";
+import { Link, Heading } from "../common";
 
 
 const WelcomePage = props => {
   return (
-    <div>
-      <h2>Welcome Page</h2>
+    <>
+      <Heading h2>Welcome Page</Heading>
       <Link to="/game">Play the Game!</Link>
-    </div>
+    </>
   );
 }
 

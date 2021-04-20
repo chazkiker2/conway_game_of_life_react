@@ -1,16 +1,16 @@
 import { main } from "../life";
-import { Button } from "../common";
+import { Button, Heading } from "../common";
 
 
 const LifeGamePage = props => {
-  
+
   const runGame = () => main();
 
   return (
-    <div>
-      <h2>Life Game Page</h2>
+    <>
+      <Heading h2>Life Game Page</Heading>
       <Button onClick={runGame}>Run Game</Button>
-    </div>
+    </>
   );
 }
 
