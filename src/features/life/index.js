@@ -17,6 +17,9 @@
 const mod = (a, b) => ((a % b) + b) % b;
 
 
+/**
+ * Contains the logic and functionality to run Conway's "Game of Life".
+ */
 export class Generation {
 
   /**
@@ -245,6 +248,6 @@ export function main() {
   }
 
   const gen = new Generation(...seeds[1]);
-  const res = gen.memoize(5, 20);
+  const res = gen.memoize(5, 20, 4);
   console.log(res);
 }

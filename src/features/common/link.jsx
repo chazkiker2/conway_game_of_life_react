@@ -1,5 +1,6 @@
 import StyledLink from "./link.styles";
 
+
 const Link = ({ children, secondary = false, ...props }) => {
   return (
     <StyledLink secondary={secondary} {...props}>
@@ -7,5 +8,6 @@ const Link = ({ children, secondary = false, ...props }) => {
     </StyledLink>
   )
 }
+
 
 export default Link;

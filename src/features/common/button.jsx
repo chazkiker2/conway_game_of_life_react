@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Loader from './loader';
 import { clickerStyles, secondaryClickerStyles, disabledClicker, baseStyles } from "./link.styles";
 
+
 const Button = ({ secondary, loading, children, disabled, ...props }) => {
   return (
     <StyledButton secondary={secondary ? "true" : undefined} disabled={disabled} {...props}>
@@ -9,6 +10,7 @@ const Button = ({ secondary, loading, children, disabled, ...props }) => {
     </StyledButton>
   )
 }
+
 
 const StyledButton = styled.button`
 	padding: 0;
