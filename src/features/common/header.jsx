@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Heading } from ".";
 
 
-const Header = props => (
+const Header = () => (
   <>
     <StyledHeader>
       <div>
