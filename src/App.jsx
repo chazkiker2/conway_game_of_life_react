@@ -6,6 +6,7 @@ import { WelcomePage } from "./features/welcome-page";
 import { LifeGamePage } from "./features/life-game";
 import { NotFound } from "./features/not-found";
 
+
 const App = () => {
   return (
     <div className="App">

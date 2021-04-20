@@ -1,10 +1,14 @@
+import { Link } from "../common";
+
 
 const WelcomePage = props => {
   return (
     <div>
-      <h1>Welcome Page</h1>
+      <h2>Welcome Page</h2>
+      <Link to="/game">Play the Game!</Link>
     </div>
   );
 }
+
 
 export default WelcomePage;
