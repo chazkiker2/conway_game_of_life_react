@@ -1,4 +1,4 @@
-# CS42 Build Week 01 — Conway's *Game of Life*
+# Conway's *Game of Life*
 
 ## About the Project
 
@@ -6,7 +6,7 @@ This repository is my React.js implementation of **Conway's *Game of Life*** for
 
 Much of the planning and information about this project can be found in the [GitHub Wiki](https://github.com/chazkiker2/conway_game_of_life_react/wiki)
 
-### Available Scripts
+## Available Scripts
 
 In the project directory, you can run:
 
