@@ -12,7 +12,6 @@ const Heading = ({ h2, h3, h4, h5, noMargin, right, center, ...props }) => {
 const baseStyle = css`
 	margin-bottom: ${props => props.noMargin && '0'};
 	color: var(--pText);
-	${'' /* font-weight: 600; */}
 	text-align: ${props => {
     if (props.center) return 'center'
     if (props.right) return 'right'

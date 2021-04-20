@@ -1,14 +1,12 @@
 import { Header } from ".";
 
 
-const Wrapper = props => {
-  return (
-    <>
-      <Header />
-      {props.children}
-    </>
-  )
-};
+const Wrapper = props => (
+  <>
+    <Header />
+    {props.children}
+  </>
+)
 
 
 export default Wrapper;

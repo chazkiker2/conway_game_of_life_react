@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Link as RouterLink } from "react-router-dom";
 import { Heading } from ".";
@@ -34,7 +33,6 @@ const StyledHeader = styled.header`
 		flex-flow: row nowrap;
 		justify-content: space-between;
 		align-items: center;
-    
     div, nav {
       display: flex;
       flex-flow: row nowrap;
