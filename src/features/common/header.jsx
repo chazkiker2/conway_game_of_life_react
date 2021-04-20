@@ -23,11 +23,11 @@ const Header = props => (
 
 
 const StyledHeader = styled.header`
-	width: 100vw;
-	background-color: var(--pDark);
-	color: var(--pText);
-	padding: 0 2rem;
-	div.container {
+  width: 100vw;
+  background-color: var(--pDark);
+  color: var(--pText);
+  padding: 0 2rem;
+  div.container {
     padding: 1rem;
 		display: flex;
 		flex-flow: row nowrap;
