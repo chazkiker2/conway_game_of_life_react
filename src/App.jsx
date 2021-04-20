@@ -1,13 +1,12 @@
+// dependencies
 import { Switch, Route } from "react-router-dom";
-import { LifeGamePage, WelcomePage, NotFound } from "./features/pages";
-import { main } from "./features/life"
 
+// pages
+import { WelcomePage } from "./features/welcome-page";
+import { LifeGamePage } from "./features/life-game";
+import { NotFound } from "./features/not-found";
 
-function App() {
-  const runGame = () => {
-    main()
-  };
-
+const App = () => {
   return (
     <div className="App">
       <Switch>
@@ -21,9 +20,6 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-
-      App
-      <button onClick={runGame}>Run Game</button>
     </div>
   );
 }

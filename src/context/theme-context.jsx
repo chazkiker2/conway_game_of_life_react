@@ -22,6 +22,9 @@ const ThemeWrapper = styled.div`
   ${wrapTheme};
   max-width: 100vw;
 	min-height: 100vh;
+  h2 {
+    font-size: 2rem;
+  }
 `;
 
 const ThemeContextProvider = props => {
