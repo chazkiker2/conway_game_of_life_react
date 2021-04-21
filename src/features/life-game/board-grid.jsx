@@ -16,19 +16,20 @@ const BoardGrid = props => {
   const [current, setCurrent] = React.useState(null);
   const [next, setNext] = React.useState(null);
   const [dim, setDim] = React.useState({ m: 0, n: 0 });
-  const [playing, setPlaying] = React.useState(true);
+  const [playing, setPlaying] = React.useState(false);
+  const [clear, setClear] = React.useState(false);
 
   const stopPlaying = () => setPlaying(false);
   const startPlaying = () => setPlaying(true);
 
 
   React.useEffect(() => {
-    const copy = {}
-    seeds[2].forEach((row, i) => row.forEach((cell, j) => copy[`${i}.${j}`] = cell))
-    setDim({ m: seeds[2].length, n: seeds[2][0].length })
-    setCurrent(copy)
-    setNext({ ...copy })
-  }, [])
+    const { dict, m, n } = seeds.i_column;
+    setDim({ m, n })
+    setCurrent({ ...dict })
+    setNext({ ...dict })
+    return () => setClear(false)
+  }, [clear])
 
   const key = (i, j) => `${i}.${j}`
   const unkey = k => k.split(".")
@@ -64,9 +65,8 @@ const BoardGrid = props => {
       .length;
   }
 
-  function generateNext() {
+  const generateNext = React.useCallback(function () {
     const copy = { ...current }
-
     for (let i = 0; i < dim.m; i++) {
       for (let j = 0; j < dim.n; j++) {
         const k = key(i, j);
@@ -78,15 +78,8 @@ const BoardGrid = props => {
         // setNext(prev => ({ ...prev, [k]: (isAlive ? (hasTwo || hasThree) : hasThree) ? 1 : 0 }))
       }
     }
-    // setCurrent({ ...next });
     return copy
-  }
-
-  function step() {
-    const next = generateNext();
-    console.log({ next })
-    setCurrent({ ...next })
-  }
+  }, [current]);
 
   function memoize(start, stop, step) {
     // this switch organizes our array of arguments
@@ -153,24 +146,34 @@ const BoardGrid = props => {
 
   }
 
+  function step() {
+    const next = generateNext();
+    setCurrent({ ...next })
+  }
+
 
   React.useEffect(() => {
     if (!playing) {
       return
     }
     const timer = setInterval(() => {
-      step()
+      const next = generateNext();
+      setCurrent({ ...next })
     }, 1000)
     return () => clearInterval(timer);
-  }, [step, playing])
+  }, [playing, generateNext])
 
   return (
     <>
       <Styled.Page>
         <div>
-          <Button onClick={startPlaying}>Play</Button>
-          <Button onClick={stopPlaying}>Stop</Button>
+          {
+            playing
+              ? <Button onClick={stopPlaying}>Stop</Button>
+              : <Button onClick={startPlaying}>Play</Button>
+          }
           <Button onClick={step}>Step</Button>
+          <Button onClick={() => setClear(true)}>Clear</Button>
         </div>
         <Styled.Board>
           {

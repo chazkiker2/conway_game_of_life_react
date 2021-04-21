@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Page = styled.div`
 	display: flex;
@@ -82,14 +82,24 @@ flex-flow: column nowrap;
 align-items: center; justify-content: center;
 `;
 
-const AltContainer = styled.div`
-  display: grid;
-  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.num_col}px)`};
 
+
+
+const AltContainer = styled.div
+  .attrs(pr => ({
+    grid_px: `calc(90vw / ${pr.num_col})`
+  }))`
+  display: grid;
+  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.grid_px})`};
+  //grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.num_col}px))`};
   div {
     border: 1px solid black;
-    width: ${pr => `${pr.num_col}px`};
-    height: ${pr => `${pr.num_col}px`};
+    // width: 20px;
+    // height: 20px;
+    width: ${pr => pr.grid_px};
+    height: ${pr => pr.grid_px};
+    /* width: ${pr => `calc(100% / ${pr.num_col}px)`}; */
+    /* height: ${pr => `calc(width / ${pr.num_col}px)`}; */
   }
 `;
 

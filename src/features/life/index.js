@@ -1,6 +1,8 @@
 /** Game of Life */
+import seedData from "./seeds"
 
 export const seeds = {
+  ...seedData,
   0: [
     [0, 0, 1],
     [0, 1, 1],
