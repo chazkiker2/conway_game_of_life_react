@@ -1,6 +1,6 @@
 # Life Patterns
 
-## Still Lifes
+## Still Life Organisms
 
 ### Blinker (period 2)
 
@@ -65,10 +65,6 @@ const pulsar = [
 ```
 
 ### Penta-decathlon (period 15)
-
-
-
-
 
 ## Oscillators
 

@@ -3,7 +3,7 @@ function createEmpty(rows, columns) {
   return new Array(rows).fill(new Array(columns).fill(0));
 }
 
-function dictify(matrix) {
+function dictFrom(matrix) {
   const dict = {}
   matrix.forEach((row, i) => row.forEach((cell, j) => dict[`${i}.${j}`] = cell))
   return dict;
@@ -12,7 +12,7 @@ function dictify(matrix) {
 function seedFrom(matrix) {
   return {
     matrix,
-    dict: dictify(matrix),
+    dict: dictFrom(matrix),
     m: matrix.length,
     n: matrix[0].length
   }
@@ -110,7 +110,7 @@ const i_column = seedFrom(
 )
 i_column.name = "I-Column"
 
-const def = seedFrom(new Array(25).fill(new Array(25).fill(0)))
+const def = createEmpty(25, 25)
 def.name = "DEFAULT"
 
 const data = {
