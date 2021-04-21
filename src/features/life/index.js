@@ -13,6 +13,8 @@ export const seeds = {
     [0, 0, 1, 0, 0],
     [0, 0, 0, 0, 0],
   ],
+  2: new Array(25).fill(new Array(25).fill(0)),
+  3: new Array(250).fill(new Array(250).fill(0))
 }
 
 /**
@@ -65,6 +67,11 @@ export class Generation {
     console.groupCollapsed(msg);
     console.table(this.next);
     console.groupEnd();
+  }
+
+  toggle(i, j) {
+    console.log({ i, j });
+    this.current[i][j] = this.current[i][j] === 0 ? 1 : 0;
   }
 
   equals(a, b = undefined) {

@@ -6,7 +6,6 @@ const Page = styled.div`
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-  /* position: absolute; */
 `;
 
 const BoardContainer = styled.div`
@@ -70,6 +69,35 @@ const CellContainer = styled.div`
   position: relative;
 `;
 
+const AltCell = styled.div`
+  background-color: black;
+
+`;
+
+const Board = styled.div`
+width: 100vw;
+/* max-width: 900px; */
+display: flex;
+flex-flow: column nowrap;
+align-items: center; justify-content: center;
+`;
+
+const AltContainer = styled.div`
+  display: grid;
+  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.num_col}px)`};
+
+  div {
+    border: 1px solid black;
+    width: ${pr => `${pr.num_col}px`};
+    height: ${pr => `${pr.num_col}px`};
+  }
+`;
+
+const Cell2 = styled.div`
+background-color: ${pr => pr.active ? "white" : "transparent"};
+cursor: pointer;
+`;
+
 
 const Styled = {
   BoardContainer,
@@ -77,6 +105,10 @@ const Styled = {
   Container,
   Cell,
   CellContainer,
+  AltCell,
+  AltContainer,
+  Board,
+  Cell2
 };
 
 
