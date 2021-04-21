@@ -1,18 +1,15 @@
-import { main } from "../life";
-import { Button, Heading } from "../common";
+import BoardGrid from "./board-grid";
+import Styled from "./life-game-page.styles";
 
 
-const LifeGamePage = props => {
-
-  const runGame = () => main();
-
-  return (
-    <>
-      <Heading h2>Life Game Page</Heading>
-      <Button onClick={runGame}>Run Game</Button>
-    </>
-  );
-}
+const LifeGamePage = props => (
+  <>
+    <Styled.Container>
+      <h2>Conway's <em className="theme">Game of Life</em></h2>
+    </Styled.Container>
+    <BoardGrid />
+  </>
+)
 
 
 export default LifeGamePage;
