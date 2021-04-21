@@ -1,5 +1,5 @@
 import React from "react"
-import { seeds } from "../life"
+import seeds from "../life/seeds"
 import Styled from "./board-grid.styles"
 import { Button } from "../common"
 
@@ -16,6 +16,7 @@ const BoardGrid = props => {
   const [playing, setPlaying] = React.useState(false)
   const [clear, setClear] = React.useState(false)
   const [seed, setSeed] = React.useState(seeds.default.name)
+  const [speed, setSpeed] = React.useState(1000) // default to 1 second
   const stopPlaying = () => setPlaying(false)
   const startPlaying = () => setPlaying(true)
 
@@ -27,6 +28,10 @@ const BoardGrid = props => {
     return () => setClear(false)
   }, [clear, seed])
 
+  React.useEffect(() => {
+
+  }, [dim.m, dim.n])
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateMemoized = React.useCallback(generateNext, [current])
 
@@ -35,11 +40,10 @@ const BoardGrid = props => {
       return
     }
     const timer = setInterval(() => {
-      const next = generateMemoized();
-      setCurrent({ ...next })
-    }, 1000)
+      setCurrent({ ...generateMemoized() })
+    }, speed)
     return () => clearInterval(timer);
-  }, [playing, generateMemoized])
+  }, [playing, generateMemoized, speed])
 
   // UTILITIES
   const key = (i, j) => `${i}.${j}`
@@ -70,7 +74,7 @@ const BoardGrid = props => {
       [i + 1, j - 1],
       [i, j - 1],
     ]
-    return Object.values(noMod).map(([ni, nj]) => [mod(ni, dim.m), mod(nj, dim.n)])
+    return noMod.map(([ni, nj]) => [mod(ni, dim.m), mod(nj, dim.n)])
   }
 
   function countLiveNeighbors(i, j) {
@@ -102,21 +106,39 @@ const BoardGrid = props => {
   return (
     <>
       <Styled.Page>
-        <div>
-          {
-            playing
-              ? <Button onClick={stopPlaying}>Stop</Button>
-              : <Button onClick={startPlaying}>Play</Button>
-          }
-          <Button onClick={step}>Step</Button>
-          <Button onClick={() => setClear(true)}>Clear</Button>
-          <select name="Seed" value={seed} onChange={selectSeed}>
-            {seeds.public.map(({ name }) => (
-              <option key={name} value={name}>{name}</option>
-            ))}
-
-          </select>
-        </div>
+        <Styled.Toolbar>
+          <div className="toolbar--one">
+            {
+              playing
+                ? <Button onClick={stopPlaying}>Stop</Button>
+                : <Button onClick={startPlaying}>Play</Button>
+            }
+            <Button onClick={step}>Step</Button>
+            <Button onClick={() => setClear(true)}>Clear</Button>
+          </div>
+          <div className="toolbar--two">
+            <div>
+              <label htmlFor="seed">Seed:</label>
+              <select name="seed" value={seed} onChange={selectSeed}>
+                {seeds.public.map(({ name }) => (
+                  <option key={name} value={name}>{name}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="speed">Speed:</label>
+              <input type="number" name="speed" value={speed} onChange={({ target: { value } }) => setSpeed(value)} />
+            </div>
+            <div>
+              <label htmlFor="num_row">Rows:</label>
+              <input type="number" name="num_row" value={dim.m} onChange={({ target: { value } }) => setDim(prev => ({ ...prev, m: value }))} />
+            </div>
+            <div>
+              <label htmlFor="num_col">Columns:</label>
+              <input type="number" name="num_col" value={dim.n} onChange={({ target: { value } }) => setDim(prev => ({ ...prev, n: value }))} />
+            </div>
+          </div>
+        </Styled.Toolbar>
         <Styled.Board>
           {
             current &&

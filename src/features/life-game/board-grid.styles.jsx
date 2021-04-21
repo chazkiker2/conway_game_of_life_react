@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Page = styled.div`
+const Styled = {};
+
+Styled.Page = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -8,14 +10,18 @@ const Page = styled.div`
 	overflow: hidden;
 `;
 
-const Board = styled.div`
+
+// GAME BOARD
+
+Styled.Board = styled.div`
   width: 100vw;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center; justify-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Grid = styled.div.attrs(pr => ({
+Styled.Grid = styled.div.attrs(pr => ({
   grid_px: `calc(90vw / ${pr.num_col})`
 }))`
   display: grid;
@@ -27,18 +33,74 @@ const Grid = styled.div.attrs(pr => ({
   }
 `;
 
-const Cell = styled.div`
+Styled.Cell = styled.div`
   background-color: ${pr => pr.active ? "white" : "transparent"};
   cursor: pointer;
 `;
 
+Styled.Toolbar = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
 
-const Styled = {
-  Page,
-  Board,
-  Grid,
-  Cell,
-};
+    width: 50%;
+    &.toolbar--one {
+    }
+    &.toolbar--two {
+      flex-flow: column nowrap;
+
+      justify-content: space-between;
+      div {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      label {
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1;
+        margin: 0.5rem;
+      }
+      select, input {
+        display: block;
+        background-color: var(--white);
+        color: var(--pDark);
+        border: none;
+      }
+    }
+
+    button {
+      width: none;
+      height: none;
+      margin: 1rem 0;
+      border-radius: none;
+
+    }
+
+    select {
+      display: block;
+      height: inherit;
+      /* height: 60px; */
+      background-color: var(--pLightest);
+      color: var(--pDark);
+      border: none;
+    }
+    input {
+    }
+  }
+
+`;
+
+
 
 
 export default Styled;
