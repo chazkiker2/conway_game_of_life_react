@@ -110,16 +110,23 @@ const i_column = seedFrom(
 )
 i_column.name = "I-Column"
 
-const def = createEmpty(25, 25)
+const def = seedFrom(createEmpty(25, 25))
 def.name = "DEFAULT"
 
-const data = {
-  infinite1,
-  infinite2,
-  pulsar,
-  toad,
-  i_column,
+
+const seeds = {
+  protected: [
+    infinite1,
+    infinite2,
+  ],
+  public: [
+    def,
+    pulsar,
+    toad,
+    i_column,
+  ],
   default: def,
 }
 
-export default data
+
+export default seeds

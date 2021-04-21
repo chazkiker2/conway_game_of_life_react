@@ -7,6 +7,7 @@ function mod(a, b) {
   return ((a % b) + b) % b
 }
 
+const seedMap = Object.fromEntries(seeds.public.map(seed => [seed.name, seed]))
 
 const BoardGrid = props => {
   // COMPONENT STATE
@@ -14,16 +15,17 @@ const BoardGrid = props => {
   const [dim, setDim] = React.useState({ m: 0, n: 0 })
   const [playing, setPlaying] = React.useState(false)
   const [clear, setClear] = React.useState(false)
+  const [seed, setSeed] = React.useState(seeds.default.name)
   const stopPlaying = () => setPlaying(false)
   const startPlaying = () => setPlaying(true)
 
   // EFFECTS
   React.useEffect(() => {
-    const { dict, m, n } = seeds.i_column;
+    const { dict, m, n } = seedMap[seed]
     setDim({ m, n })
     setCurrent({ ...dict })
     return () => setClear(false)
-  }, [clear])
+  }, [clear, seed])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateMemoized = React.useCallback(generateNext, [current])
@@ -48,6 +50,11 @@ const BoardGrid = props => {
   function handleCellClick(i, j) {
     const k = key(i, j)
     setCurrent(prev => ({ ...prev, [k]: flip(prev[k]) }))
+  }
+
+  function selectSeed(evt) {
+    const { value } = evt.target;
+    setSeed(value)
   }
 
   // CORE FUNCTIONALITY
@@ -103,6 +110,12 @@ const BoardGrid = props => {
           }
           <Button onClick={step}>Step</Button>
           <Button onClick={() => setClear(true)}>Clear</Button>
+          <select name="Seed" value={seed} onChange={selectSeed}>
+            {seeds.public.map(({ name }) => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+
+          </select>
         </div>
         <Styled.Board>
           {
