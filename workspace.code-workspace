@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "conway_game_of_life_react.wiki",
+			"path": "../conway_game_of_life_react.wiki"
+		}
+	],
+  "settings": {}
+}

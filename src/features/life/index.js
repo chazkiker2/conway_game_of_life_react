@@ -1,5 +1,19 @@
 /** Game of Life */
 
+export const seeds = {
+  0: [
+    [0, 0, 1],
+    [0, 1, 1],
+    [0, 0, 1],
+  ],
+  1: [
+    [0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+  ],
+}
 
 /**
  * Modulo operator that follows Python's functionality rather than JS

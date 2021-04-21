@@ -18,21 +18,16 @@ const Container = styled.div`
     color: var(--pText);
     max-width: 100%;
     text-align: center;
-
     @media (max-width: 480px) {
         font-size: 40px;
     }
-  }
-  p {
-    font-size: 1.8rem;
-    text-align: center;
   }
 `;
 
 
 const Styled = {
   Container,
-}
+};
 
 
 export default Styled;
