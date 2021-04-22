@@ -49,8 +49,8 @@ export function seedFrom(matrix) {
   return {
     matrix,
     dict: dictFrom(matrix),
-    num_rows: matrix.length,
-    num_cols: matrix[0].length
+    numRows: matrix.length,
+    numCols: matrix[0].length
   }
 }
 
@@ -97,7 +97,7 @@ toad.name = "Toad"
 const pulsar = seedFrom(
   // 17 rows x 17 columns
   [
-    // 0, 1, 2, 3, 4, 5, 6, 7, X, 9, 0, 1, 2, 3, 4, 5, 6
+    //, 1, 2, 3, 4, 5, 6, 7, X, 9, 0, 1, 2, 3, 4, 5, 6
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], /* 0  */
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], /* 1  */
     [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0], /* 2  */

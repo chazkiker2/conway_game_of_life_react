@@ -10,9 +10,6 @@ Styled.Page = styled.div`
 	overflow: hidden;
 `;
 
-
-// GAME BOARD
-
 Styled.Board = styled.div`
   width: 100vw;
   display: flex;
@@ -23,15 +20,10 @@ Styled.Board = styled.div`
 
 Styled.Grid = styled.div.attrs(pr => ({
   px_w: `calc(90vmin / ${pr.num_col})`,
-  // px_h: `calc(40vh / ${pr.num_rows})`,
 }))`
   display: grid;
   grid-auto-flow: row column;
-  /* grid-template: auto  / auto  auto; */
-  /* grid-template-areas: auto; */
   grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.px_w})`};
-  /* grid-template-rows: ${pr => `repeat(${pr.num_rows}, ${pr.px_h})`}; */
-
   div {
     border: 1px solid black;
     width: ${pr => pr.px_w};
@@ -57,13 +49,9 @@ Styled.Toolbar = styled.div`
     height: 100%;
     align-items: center;
     justify-content: space-evenly;
-
     width: 50%;
-    &.toolbar--one {
-    }
     &.toolbar--two {
       flex-flow: column nowrap;
-
       justify-content: space-between;
       div {
         display: flex;
@@ -84,7 +72,6 @@ Styled.Toolbar = styled.div`
         border: none;
       }
     }
-
     button {
       width: none;
       height: none;
@@ -92,11 +79,9 @@ Styled.Toolbar = styled.div`
       border-radius: none;
 
     }
-
     select {
       display: block;
       height: inherit;
-      /* height: 60px; */
       background-color: var(--pLightest);
       color: var(--pDark);
       border: none;
@@ -104,10 +89,7 @@ Styled.Toolbar = styled.div`
     input {
     }
   }
-
 `;
-
-
 
 
 export default Styled;
