@@ -28,22 +28,22 @@ Much of the planning and information about this project can be found in the [Git
       - [x] When main loop completes: swap current & next grids, repeat simulation until stopped
     - [x] Break down the aforementioned steps into appropriate sub-tasks implemented with modular, readable code
     - [x] Use double buffering to update grid with next generation
-    - [x] Does something well-documented with the edge of the grid (e.g., wrap around to the far side)
+    - [ ] Does something well-documented with the edge of the grid (e.g., wrap around to the far side)
 - [ ] Custom Features (Implement at least 3 of the following features):
-  - [ ] Create a few sample cell configurations that users can load and run
+  - [x] Create a few sample cell configurations that users can load and run
   - [ ] Add an option that creates a random cell configuration that users can
   run
   - [ ] Add additional cell properties, like color or size, and incorporate
   them into your visualization
-  - [ ] Allow users to specify the speed of the simulation
-  - [ ] Provide functionality to manually step through the simulation one generation at a time, as opposed to animating automatically
-  - [ ] Allow users to change the dimension of the grid being displayed
+  - [x] Allow users to specify the speed of the simulation
+  - [x] Provide functionality to manually step through the simulation one generation at a time, as opposed to animating automatically
+  - [x] Allow users to change the dimension of the grid being displayed
   - [ ] Given a specific generation, calculate the configuration of cells at that point in time, and jump to that state, bypassing animation (i.e. skip ahead _n_ generations).
   - [ ] If you have an idea for a custom feature on this list, run it by your TL or instructor
 - [ ] About
   - [ ] On the main entry point of the application, include a separate section or link to another page or popup that describes the two main rules (birth & death) of Conway’s Game of Life
 - [ ] Stretch Goals
-  - [ ] Implement 2+ additional custom features, above
+  - [x] Implement 2+ additional custom features, above
   - [ ] Deploy your app to a hosting service or, for iOS, to TestFlight (or the App Store!). Web developers can see [more deployment info here](resources/web/deployment).
   - [ ] Write a how-to guide or blog post that walks readers through the
   work you did to implement your project
