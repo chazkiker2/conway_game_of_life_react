@@ -10,16 +10,16 @@ Much of the planning and information about this project can be found in the [Git
 
 - [ ] Visualization
   - [x] Grid to display cells
-  - [ ] Cell objects/components that, at a minimum, should have:
+  - [x] Cell objects/components that, at a minimum, should have:
     - [x] current state
     - [x] clickable
       - [x] can be clicked to allow user to setup initial cell configuration
-      - [ ] should NOT be clickable while simulation is running
+      - [x] ~~should NOT be clickable while simulation is running~~ (ignoring b/c I didn't like this way as much... more fun to click throughout simulation)
     - [x] Toggle state functionality
   - [ ] Text to display current generation # being displayed
   - [x] Button(s) that start & stop the animation
   - [x] Button to clear the grid
-- [ ] Application State & Functionality
+- [x] Application State & Functionality
   - [x] An appropriate data structure to hold a grid of cells at minimum 25x25
   - [x] Game of Life Algorithm
     - [x] For each cell in current generation's grid:
@@ -28,16 +28,15 @@ Much of the planning and information about this project can be found in the [Git
       - [x] When main loop completes: swap current & next grids, repeat simulation until stopped
     - [x] Break down the aforementioned steps into appropriate sub-tasks implemented with modular, readable code
     - [x] Use double buffering to update grid with next generation
-    - [ ] Does something well-documented with the edge of the grid (e.g., wrap around to the far side)
-- [ ] Custom Features (Implement at least 3 of the following features):
+    - [x] Does something well-documented with the edge of the grid (e.g., wrap around to the far side)
+- [ ] Custom Features (implement at least 3 of the following features):
   - [x] Create a few sample cell configurations that users can load and run
-  - [ ] Add an option that creates a random cell configuration that users can
-  run
-  - [ ] Add additional cell properties, like color or size, and incorporate
-  them into your visualization
   - [x] Allow users to specify the speed of the simulation
   - [x] Provide functionality to manually step through the simulation one generation at a time, as opposed to animating automatically
   - [x] Allow users to change the dimension of the grid being displayed
+  - [ ] Add an option that creates a random cell configuration that users can
+  run
+  - [ ] Add additional cell properties, like color or size, and incorporate them into your visualization
   - [ ] Given a specific generation, calculate the configuration of cells at that point in time, and jump to that state, bypassing animation (i.e. skip ahead _n_ generations).
   - [ ] If you have an idea for a custom feature on this list, run it by your TL or instructor
 - [ ] About
