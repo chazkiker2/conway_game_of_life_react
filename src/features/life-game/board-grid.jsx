@@ -76,8 +76,9 @@ const BoardGrid = props => {
     }
 
     const { dict } = seedFrom(copy_matrix.map(sub => [...sub]))
-    debugger
     setCurrent(dict)
+    debugger;
+
     return () => {
       setIsResizing(false)
     }
@@ -162,6 +163,26 @@ const BoardGrid = props => {
   return (
     <>
       <Styled.Page>
+        <Styled.Board>
+          {
+            current &&
+            <Styled.Grid num_col={dim.num_cols} num_rows={dim.num_rows}>
+              {
+                Object.entries(current)?.map(([k, value]) => {
+                  const [i, j] = unKey(k);
+                  return (
+                    <Styled.Cell
+                      key={k}
+                      onClick={() => handleCellClick(i, j)}
+                      active={value}
+                    />
+                  )
+                }
+                )
+              }
+            </Styled.Grid>
+          }
+        </Styled.Board>
         <Styled.Toolbar>
           <div className="toolbar--one">
             {
@@ -195,26 +216,6 @@ const BoardGrid = props => {
             </div>
           </div>
         </Styled.Toolbar>
-        <Styled.Board>
-          {
-            current &&
-            <Styled.Grid num_col={dim.num_cols} num_rows={dim.num_rows}>
-              {
-                Object.entries(current)?.map(([k, value]) => {
-                  const [i, j] = unKey(k);
-                  return (
-                    <Styled.Cell
-                      key={k}
-                      onClick={() => handleCellClick(i, j)}
-                      active={value}
-                    />
-                  )
-                }
-                )
-              }
-            </Styled.Grid>
-          }
-        </Styled.Board>
       </Styled.Page>
     </>
   )

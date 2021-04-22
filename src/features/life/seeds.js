@@ -42,7 +42,6 @@ export function matrixFrom(dict) {
     }
   }
 
-
   return matrix
 
 }

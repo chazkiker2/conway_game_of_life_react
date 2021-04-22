@@ -27,7 +27,10 @@ Styled.Grid = styled.div.attrs(pr => ({
 }))`
   display: grid;
   grid-auto-flow: row column;
+  /* grid-template: auto  / auto  auto; */
+  /* grid-template-areas: auto; */
   grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.px_w})`};
+  /* grid-template-rows: ${pr => `repeat(${pr.num_rows}, ${pr.px_h})`}; */
 
   div {
     border: 1px solid black;
