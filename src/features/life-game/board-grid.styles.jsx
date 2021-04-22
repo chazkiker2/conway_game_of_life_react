@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Page = styled.div`
+const Styled = {};
+
+Styled.Page = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -8,37 +10,86 @@ const Page = styled.div`
 	overflow: hidden;
 `;
 
-const Board = styled.div`
+Styled.Board = styled.div`
   width: 100vw;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center; justify-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Grid = styled.div.attrs(pr => ({
-  grid_px: `calc(90vw / ${pr.num_col})`
+Styled.Grid = styled.div.attrs(pr => ({
+  px_w: `calc(90vmin / ${pr.num_col})`,
 }))`
   display: grid;
-  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.grid_px})`};
+  grid-auto-flow: row column;
+  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.px_w})`};
   div {
     border: 1px solid black;
-    width: ${pr => pr.grid_px};
-    height: ${pr => pr.grid_px};
+    width: ${pr => pr.px_w};
+    height: ${pr => pr.px_w};
   }
 `;
 
-const Cell = styled.div`
+Styled.Cell = styled.div`
   background-color: ${pr => pr.active ? "white" : "transparent"};
   cursor: pointer;
 `;
 
+Styled.Toolbar = styled.div`
+  /* height: 10vh; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    &.toolbar--two {
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      div {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      label {
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1;
+        margin: 0.5rem;
+      }
+      select, input {
+        display: block;
+        background-color: var(--white);
+        color: var(--pDark);
+        border: none;
+      }
+    }
+    button {
+      width: none;
+      height: none;
+      margin: 1rem 0;
+      border-radius: none;
 
-const Styled = {
-  Page,
-  Board,
-  Grid,
-  Cell,
-};
+    }
+    select {
+      display: block;
+      height: inherit;
+      background-color: var(--pLightest);
+      color: var(--pDark);
+      border: none;
+    }
+    input {
+    }
+  }
+`;
 
 
 export default Styled;
