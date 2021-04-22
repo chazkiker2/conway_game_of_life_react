@@ -22,14 +22,17 @@ Styled.Board = styled.div`
 `;
 
 Styled.Grid = styled.div.attrs(pr => ({
-  grid_px: `calc(90vw / ${pr.num_col})`
+  px_w: `calc(90vmin / ${pr.num_col})`,
+  // px_h: `calc(40vh / ${pr.num_rows})`,
 }))`
   display: grid;
-  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.grid_px})`};
+  grid-auto-flow: row column;
+  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.px_w})`};
+
   div {
     border: 1px solid black;
-    width: ${pr => pr.grid_px};
-    height: ${pr => pr.grid_px};
+    width: ${pr => pr.px_w};
+    height: ${pr => pr.px_w};
   }
 `;
 
@@ -39,6 +42,7 @@ Styled.Cell = styled.div`
 `;
 
 Styled.Toolbar = styled.div`
+  /* height: 10vh; */
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

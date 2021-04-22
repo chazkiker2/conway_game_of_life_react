@@ -1,20 +1,58 @@
 
-function createEmpty(rows, columns) {
-  return new Array(rows).fill(new Array(columns).fill(0));
+export function createEmpty(rows, columns) {
+  const out = new Array(rows)
+  for (let i = 0; i < rows; i++) {
+    out[i] = new Array(columns).fill(0)
+  }
+  return out;
+  // return new Array(rows).fill(new Array(columns).fill(0));
 }
 
-function dictFrom(matrix) {
+export function dictFrom(matrix) {
   const dict = {}
   matrix.forEach((row, i) => row.forEach((cell, j) => dict[`${i}.${j}`] = cell))
   return dict;
 }
 
-function seedFrom(matrix) {
+export function matrixFrom(dict) {
+  const deKey = k => k.split(".").map(num => parseInt(num))
+  const key = (i, j) => `${i}.${j}`
+
+  let max_i = -1;
+  let max_j = -1;
+
+  for (const k in dict) {
+    const [i, j] = deKey(k);
+    max_i = Math.max(max_i, i)
+    max_j = Math.max(max_j, j)
+    if (isNaN(max_j) || isNaN(max_i)) console.log({ i, j, k, s: k.split(".").map(num => parseInt(num)) })
+  }
+
+  if (max_i === -1) {
+    return []
+  } else if (max_j === -1) {
+    return new Array(max_i).fill(0)
+  }
+
+  const matrix = createEmpty(max_i + 1, max_j + 1)
+  for (let i = 0; i < max_i; i++) {
+    for (let j = 0; j < max_j; j++) {
+      const val = dict[key(i, j)]
+      matrix[i][j] = val
+    }
+  }
+
+
+  return matrix
+
+}
+
+export function seedFrom(matrix) {
   return {
     matrix,
     dict: dictFrom(matrix),
-    m: matrix.length,
-    n: matrix[0].length
+    num_rows: matrix.length,
+    num_cols: matrix[0].length
   }
 }
 
