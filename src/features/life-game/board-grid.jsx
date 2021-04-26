@@ -114,6 +114,9 @@ const BoardGrid = props => {
     return () => {
       setIsResizing(false)
     }
+    // dep @numRows and @numCols -- we want to fire this effect whenever we resize the grid
+    // dep @current -- effect depends on current 
+    // dep @isResizing -- to determine when we're truly resizing rather than simply changing `current`
   }, [numRows, numCols, current, isResizing])
 
 
@@ -285,12 +288,12 @@ const BoardGrid = props => {
               <input type="number" name="speed" value={speed} onChange={({ target: { value } }) => setSpeed(value)} />
             </div>
             <div>
-              <label htmlFor="num_rows">Rows:</label>
-              <input type="number" name="num_rows" value={dim.numRows} onChange={handleResize} />
+              <label htmlFor="numRows">Rows:</label>
+              <input type="number" name="numRows" value={dim.numRows} onChange={handleResize} />
             </div>
             <div>
-              <label htmlFor="num_cols">Columns:</label>
-              <input type="number" name="num_cols" value={dim.numCols} onChange={handleResize} />
+              <label htmlFor="numCols">Columns:</label>
+              <input type="number" name="numCols" value={dim.numCols} onChange={handleResize} />
             </div>
           </div>
         </Styled.Toolbar>

@@ -11,7 +11,8 @@ Styled.Page = styled.div`
 `;
 
 Styled.Board = styled.div`
-  width: 100vw;
+  height: 90vmin;
+  width: 90vmin;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -21,13 +22,12 @@ Styled.Board = styled.div`
 Styled.Grid = styled.div.attrs(pr => ({
   px_w: `calc(90vmin / ${pr.num_col})`,
 }))`
+  width: 90%;
+  height: 90%;
   display: grid;
-  grid-auto-flow: row column;
-  grid-template-columns: ${pr => `repeat(${pr.num_col}, ${pr.px_w})`};
+  grid-template-columns: ${pr => `repeat(${pr.num_col}, 1fr)`};
   div {
     border: 1px solid black;
-    width: ${pr => pr.px_w};
-    height: ${pr => pr.px_w};
   }
 `;
 
